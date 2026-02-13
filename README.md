@@ -1,4 +1,5 @@
 # Effects of False Positive and False Negative Connections on Network-Level Metrics
+
 This projectis aiming to measure the of False Positive (FP) and False Negative (FN) connections in a connectome on the network properties. To to that, the fundamental measurements were taken into account:  
 - Clusterring Coefficient (C)
 - Global efficiency (GE) 
@@ -18,12 +19,78 @@ In order to account for different network types, the initial matrix was then bin
 
 The full research report with the results is stored in "Effects of False Positive and False Negative Connections on Network, Mariia Dolmatova.pdf"  
 
-## Function overview:
-
-
-## Function dependencies:  
+## Pipeline:
+```
+Load the connectome  
+             |  
+Initial primary connectome analysis  
+             |  
+Computation of normalized metrics  
+             |  
+FP and FN generation check   
+             |   
+Dynamic metric computation for each added FP and FN   
+             |   
+Plotting the graphs  
 ```
 
+## Function overview:
+FPC_and_FNC_main.m    
+- Main function that loads the connectome and executes the code. 
+- Input:  /MATLAB Drive/ConnOrdered_040903.mat
+- Output: Plots of connectome metrics dynamic change depending on the amount of the FP and FN (0 to 100), averaged over 300 networks, presented for weighted, binary, directed and undirected networks
+
+compute_dynamics.m
+- Computes all the metrices in a loop while adding 1 PF or FN each iteration.
+- Input: initial matrix, number of iterations, whether the matrix is symmetric and weighted
+- Output:  properties [Cs_FP, GEs_FP, Modularities_FP, Num_modules_FP, Cs_FN, GEs_FN, Modularities_FN, Num_modules_FN]
+
+compute_all_metrics.m
+- Computes all the metrices in a loop while adding 1 PF or FN each iteration.
+- Input: initial matrix, number of iterations, whether the matrix is symmetric and weighted
+- Output:  object "metrics" with properties:  
+ .binary_density or .weighted_density  
+.C  
+.L  
+.GE  
+.modularity  
+.num_modules  
+.rich_club
+
+normalizeMetrics.m
+- Normalizes chosen metrics over a given amount of randomly rewired networks.
+- Input: initial matrix, weighted or binary matrix (bool), directed or undirected matrix (bool), selected metrics, amount of networks and rewired edges.
+- Output:  normalized metrics
+
+FP_uniform.m
+- Creates given amount of False Positive connections in a given matrix.
+- Input: initial matrix, weighted or binary matrix (bool), number of FP
+- Output:  new matrix with FP
+
+FN_uniform.m
+- Creates given amount of False Negative connections in a given matrix.
+- Input: initial matrix, weighted or binary matrix (bool), number of FN
+- Output:  new matrix with FN  
+
+## Function dependencies:   
+```
+FP_uniform.m ----------------------------------------- FPC_and_FNC_main.m    
+          |                                                                          
+           ---------- compute_dynamics.m ---------- FPC_and_FNC_main.m 
+                                                                                
+FN_uniform.m ----------------------------------------- FPC_and_FNC_main.m  
+          |                                                                          
+           ---------- compute_dynamics.m ---------- FPC_and_FNC_main.m 
+
+compute_all_metrics.m ---------------------------- FPC_and_FNC_main.m  
+          |                                                                          
+           ---------- compute_dynamics.m ---------- FPC_and_FNC_main.m 
+
+normalizeMetrics.m --------------------------------- FPC_and_FNC_main.m  
+
+compute_dynamics.m ----------------------------- FPC_and_FNC_main.m 
+
+FPC_and_FNC_main.m
 ```
 
 ## Requirements
