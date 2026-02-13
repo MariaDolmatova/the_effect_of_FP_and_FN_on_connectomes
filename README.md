@@ -18,7 +18,20 @@ In order to account for different network types, the initial matrix was then bin
 
 The full research report with the results is stored in "Effects of False Positive and False Negative Connections on Network, Mariia Dolmatova.pdf"  
 
-## Project structure:  
+## Function overview:
 
 
+## Function dependencies:  
+```
+
+```
+
+## Requirements
+
+```
+- MATLAB (R2017a or later)
+- Statistics and Machine Learning Toolbox (optional, if using statistical tests)
+- Brain Connectivity Toolbox (BCT) — for network metric functions
+- Network Based Statistic Toolbox (optional)
+```
 _This is a school project for Networks Neuroscience course at VU Amsterdam._
