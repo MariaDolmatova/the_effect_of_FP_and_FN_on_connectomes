@@ -1,5 +1,6 @@
 # Effects of False Positive and False Negative Connections on Network-Level Metrics
 
+## Introduction
 This projectis aiming to measure the of False Positive (FP) and False Negative (FN) connections in a connectome on the network properties. To to that, the fundamental measurements were taken into account:  
 - Clusterring Coefficient (C)
 - Global efficiency (GE) 
