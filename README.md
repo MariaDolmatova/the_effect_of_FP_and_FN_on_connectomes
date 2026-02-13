@@ -1,4 +1,4 @@
-# the_effect_of_FP_and_FN_on_connectomes  
+# Effects of False Positive and False Negative Connections on Network-Level Metrics
 This projectis aiming to measure the of False Positive (FP) and False Negative (FN) connections in a connectome on the network properties. To to that, the fundamental measurements were taken into account:  
 - Clusterring Coefficient (C)
 - Global efficiency (GE) 
@@ -16,5 +16,9 @@ This data was used as a reference graph for subsequently introducing FP and FN c
 ## Extrapolation of the method  
 In order to account for different network types, the initial matrix was then binarized to simulate binary undirected connectome, and the whole process was repeated. In the binary case the weights for FP were equal 1. Later the initial weighted matrix was symmetrified and binarized again to also simulate symmetrical weighted and unweighted data and was fed into the same pipeline. 
 
-The full research report with the results is stored in "
-This is a school project for Networks Neuroscience course at VU Amsterdam.
+The full research report with the results is stored in "Effects of False Positive and False Negative Connections on Network, Mariia Dolmatova.pdf"  
+
+## Project structure:  
+
+
+_This is a school project for Networks Neuroscience course at VU Amsterdam._
